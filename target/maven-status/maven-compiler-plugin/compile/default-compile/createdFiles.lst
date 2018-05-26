@@ -1,0 +1,4 @@
+xyf\frpc\config\demo\Demo.class
+xyf\frpc\config\Consumer.class
+xyf\frpc\config\schema\spring\FRPCNamespaceHandler.class
+xyf\frpc\config\schema\spring\ComsumerBeanDefinitionParser.class
