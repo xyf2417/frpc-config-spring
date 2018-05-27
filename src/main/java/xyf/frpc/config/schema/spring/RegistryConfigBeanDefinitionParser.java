@@ -3,10 +3,15 @@ package xyf.frpc.config.schema.spring;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
+import org.springframework.beans.factory.support.ManagedList;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import xyf.frpc.config.RegistryConfig;
 
@@ -35,9 +40,26 @@ public class RegistryConfigBeanDefinitionParser implements BeanDefinitionParser{
         String type = element.getAttribute("type");
         beanDefinition.getPropertyValues().addPropertyValue("type", type);
         
-        String address = element.getAttribute("address");
+        ManagedList list = new ManagedList();
+        
+        NodeList addressesNodeLst = element.getChildNodes();
+        for(int i=0; i< addressesNodeLst.getLength();i++)
+        {
+        	Node node = addressesNodeLst.item(i);
+        	if(node.getNodeType() != Node.TEXT_NODE)
+        	{
+        		NodeList addressNodeLst = node.getChildNodes();
+        		for(int j=0; j < addressNodeLst.getLength(); j++) {
+        			Node addressNode = addressNodeLst.item(j);
+        			if(addressNode != null && addressNode.getNodeType() != Node.TEXT_NODE) {
+        				NamedNodeMap addressAttrMap = addressNode.getAttributes();
+        				list.add(addressAttrMap.getNamedItem("host").toString().split("=")[1].replace("\"", "") + ":" + addressAttrMap.getNamedItem("port").toString().split("=")[1].replace("\"", ""));
+        			}
+        		}
+        	}
+        }
+        beanDefinition.getPropertyValues().addPropertyValue("addresses", list);
         //TODO: valid the address
-        beanDefinition.getPropertyValues().addPropertyValue("address", address);
         
         if(logger.isInfoEnabled())
         {
