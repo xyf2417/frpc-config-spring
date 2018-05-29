@@ -11,7 +11,7 @@
     </xsd:annotation>
     
     <xsd:complexType name="abstractConfigType">
-    	<xsd:attribute name="id" type="xsd:string" use="required">
+    	<xsd:attribute name="id" type="xsd:string" use="optional">
     		<xsd:annotation>
                 <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
             </xsd:annotation>
@@ -30,6 +30,7 @@
             </xsd:annotation>
     	</xsd:attribute>
     </xsd:complexType>
+    
 
     <xsd:element name="consumer" type="consumerType">
         <xsd:annotation>
@@ -75,31 +76,14 @@
     <xsd:element name="address" type="registryAddressType"/>
     
     <xsd:complexType name="registryAddressesType">
-   		<xsd:sequence>
+   		<xsd:sequence  maxOccurs="unbounded" minOccurs="1">
 	    	<xsd:element ref="address" />
     	</xsd:sequence>
     </xsd:complexType>
     <xsd:element name="addresses" type="registryAddressesType"/>
-    
-    <!-- <xsd:complexType name="registryType">
-    	<xsd:sequence>
-	     	<xsd:element ref="address"/>
-	    </xsd:sequence>
-	    <xsd:attribute name="id" type="xsd:string" use="required">
-    		<xsd:annotation>
-                <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
-            </xsd:annotation>
-    	</xsd:attribute>
-	    <xsd:attribute name="type" type="xsd:string" use="required">
-    		<xsd:annotation>
-                <xsd:documentation><![CDATA[ The registry type. ]]></xsd:documentation>
-            </xsd:annotation>
-    	</xsd:attribute>
-    </xsd:complexType> -->
-	
 	
 	<xsd:complexType name="registryType">
-		<xsd:sequence>
+		<xsd:sequence maxOccurs="1" minOccurs="1">
 			<xsd:element ref="addresses"/>
 		</xsd:sequence>
 		<xsd:attribute name="id" type="xsd:string" use="required">
@@ -113,52 +97,51 @@
 	            </xsd:annotation>
 	    	</xsd:attribute>
 	</xsd:complexType>
-    
-    
+
     
     <xsd:element name="registry" type="registryType">
         <xsd:annotation>
             <xsd:documentation><![CDATA[ The registry config ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    <!-- <xsd:element name="registry">
-    	<xsd:complexType>
-    		<xsd:sequence>
-		     	<xsd:element name="addresses">
-		     		<xsd:complexType>
-		     			<xsd:sequence>
-					    	<xsd:element name="address">
-					    		<xsd:complexType>
-							    	<xsd:attribute name="host" type="xsd:string" use="required">
-							    		<xsd:annotation>
-							                <xsd:documentation><![CDATA[ The reristry host. ]]></xsd:documentation>
-							            </xsd:annotation>
-							    	</xsd:attribute>
-							    	<xsd:attribute name="port" type="xsd:integer" use="required">
-							    		<xsd:annotation>
-							                <xsd:documentation><![CDATA[ The reristry port. ]]></xsd:documentation>
-							            </xsd:annotation>
-							    	</xsd:attribute>
-							    </xsd:complexType>
-					    	</xsd:element>
-				    	</xsd:sequence>
-		     		</xsd:complexType>
-		     	</xsd:element>
-		    </xsd:sequence>
-    		<xsd:attribute name="id" type="xsd:string" use="required">
-	    		<xsd:annotation>
-	                <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
-	            </xsd:annotation>
-	    	</xsd:attribute>
-		    <xsd:attribute name="type" type="xsd:string" use="required">
-	    		<xsd:annotation>
-	                <xsd:documentation><![CDATA[ The registry type. ]]></xsd:documentation>
-	            </xsd:annotation>
-	    	</xsd:attribute>
-	    </xsd:complexType>
-    </xsd:element> -->
     
+    <xsd:complexType name="applicationType">
+    	<xsd:complexContent>
+            <xsd:extension base="abstractConfigType">
+		    	<xsd:attribute name="name" type="xsd:string" use="required">
+		    		<xsd:annotation>
+		                <xsd:documentation><![CDATA[ The server protocol. ]]></xsd:documentation>
+		            </xsd:annotation>
+		    	</xsd:attribute>
+	    	</xsd:extension>
+    	</xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="application" type="applicationType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The Application config ]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
     
-    
-    
+    <xsd:complexType name="providerType">
+    	<xsd:complexContent>
+            <xsd:extension base="abstractConfigType">
+		    	<xsd:attribute name="interface" type="xsd:string" use="required">
+		    		<xsd:annotation>
+		                <xsd:documentation><![CDATA[ The provider interface. ]]></xsd:documentation>
+		            </xsd:annotation>
+		    	</xsd:attribute>
+		    	<xsd:attribute name="ref" type="xsd:string" use="required">
+		    		<xsd:annotation>
+		                <xsd:documentation><![CDATA[ The interface implementation bean id. ]]></xsd:documentation>
+		            </xsd:annotation>
+		    	</xsd:attribute>
+	    	</xsd:extension>
+    	</xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="provider" type="providerType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ The provider ]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+ 
 </xsd:schema>

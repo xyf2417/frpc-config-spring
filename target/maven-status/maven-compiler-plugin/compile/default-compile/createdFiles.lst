@@ -1,6 +1,7 @@
 xyf\frpc\config\demo\Demo.class
-xyf\frpc\config\Consumer.class
+xyf\frpc\config\schema\spring\ProviderBeanDefinitionParser.class
 xyf\frpc\config\schema\spring\FRPCNamespaceHandler.class
+xyf\frpc\config\schema\spring\ApplicationBeanDefinitionParser.class
 xyf\frpc\config\schema\spring\ComsumerBeanDefinitionParser.class
 xyf\frpc\config\schema\spring\RegistryConfigBeanDefinitionParser.class
 xyf\frpc\config\schema\spring\ProtocolConfigBeanDefinitionParser.class
