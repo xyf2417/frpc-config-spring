@@ -13,7 +13,7 @@
     <xsd:complexType name="abstractConfigType">
     	<xsd:attribute name="id" type="xsd:string" use="optional">
     		<xsd:annotation>
-                <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
+                <xsd:documentation><![CDATA[ The id of this config. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
     </xsd:complexType>
@@ -24,7 +24,7 @@
                 <xsd:documentation><![CDATA[ The consumer name. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
-    	<xsd:attribute name="id" type="xsd:string" use="required">
+    	<xsd:attribute name="id" type="xsd:string" use="optional">
     		<xsd:annotation>
                 <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
             </xsd:annotation>
@@ -49,6 +49,11 @@
 		    	<xsd:attribute name="port" type="xsd:integer" use="required">
 		    		<xsd:annotation>
 		                <xsd:documentation><![CDATA[ The server port. ]]></xsd:documentation>
+		            </xsd:annotation>
+		    	</xsd:attribute>
+		    	<xsd:attribute name="transport" type="xsd:string" use="optional" default="netty">
+		    		<xsd:annotation>
+		                <xsd:documentation><![CDATA[ The transport type. ]]></xsd:documentation>
 		            </xsd:annotation>
 		    	</xsd:attribute>
 	    	</xsd:extension>
@@ -88,7 +93,7 @@
 		</xsd:sequence>
 		<xsd:attribute name="id" type="xsd:string" use="required">
 	    		<xsd:annotation>
-	                <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
+	                <xsd:documentation><![CDATA[ The registry id. ]]></xsd:documentation>
 	            </xsd:annotation>
 	    	</xsd:attribute>
 		    <xsd:attribute name="type" type="xsd:string" use="required">
