@@ -8,11 +8,12 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
+
 import xyf.frpc.config.Provider;
 
 public class ProviderBeanDefinitionParser implements BeanDefinitionParser{
 
-	private Log logger = LogFactory.getLog(getClass());
+	private final static Log logger = LogFactory.getLog(ProviderBeanDefinitionParser.class);
 	
 	private final static Class<?> BEAN_CLASS = Provider.class;
 	
@@ -52,7 +53,7 @@ public class ProviderBeanDefinitionParser implements BeanDefinitionParser{
         
         if(logger.isInfoEnabled())
         {
-        	logger.info("Registering the bean with id='" + id + "' into the beanfactory");
+        	logger.info("frpc: Registering the bean with id='" + id + "' into the beanfactory");
         }
         parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
         

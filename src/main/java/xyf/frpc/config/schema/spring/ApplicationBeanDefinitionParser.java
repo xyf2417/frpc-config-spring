@@ -12,7 +12,7 @@ import xyf.frpc.config.Application;
 
 public class ApplicationBeanDefinitionParser implements BeanDefinitionParser{
 
-	private Log logger = LogFactory.getLog(getClass());
+	private final static Log logger = LogFactory.getLog(ApplicationBeanDefinitionParser.class);
 	
 	private final static Class<?> BEAN_CLASS = Application.class;
 	
@@ -39,7 +39,7 @@ public class ApplicationBeanDefinitionParser implements BeanDefinitionParser{
         
         if(logger.isInfoEnabled())
         {
-        	logger.info("Registering the bean with id='" + id + "' into the beanfactory");
+        	logger.info("frpc: Registering the bean with id='" + id + "' into the beanfactory");
         }
         parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
 		return beanDefinition;

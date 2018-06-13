@@ -13,7 +13,7 @@ import xyf.frpc.config.Consumer;
 
 public class ComsumerBeanDefinitionParser implements BeanDefinitionParser {
 	
-	private Log logger = LogFactory.getLog(getClass());
+	private final static Log logger = LogFactory.getLog(ComsumerBeanDefinitionParser.class);
 	
 	private final static Class<?> BEAN_CLASS = Consumer.class;
 
@@ -38,7 +38,7 @@ public class ComsumerBeanDefinitionParser implements BeanDefinitionParser {
         beanDefinition.getPropertyValues().addPropertyValue("name", name);
         if(logger.isInfoEnabled())
         {
-        	logger.info("Registering the bean with id='" + id + "' into the beanfactory");
+        	logger.info("frpc: Registering the bean with id='" + id + "' into the beanfactory");
         }
         parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
 		return beanDefinition;

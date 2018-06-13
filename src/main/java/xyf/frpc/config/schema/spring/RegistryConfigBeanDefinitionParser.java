@@ -3,7 +3,6 @@ package xyf.frpc.config.schema.spring;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.ManagedList;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
@@ -16,7 +15,8 @@ import org.w3c.dom.NodeList;
 import xyf.frpc.config.RegistryConfig;
 
 public class RegistryConfigBeanDefinitionParser implements BeanDefinitionParser{
-	private Log logger = LogFactory.getLog(getClass());
+	
+	private final static Log logger = LogFactory.getLog(RegistryConfigBeanDefinitionParser.class);
 	
 	private final static Class<?> BEAN_CLASS = RegistryConfig.class;
 	
@@ -63,7 +63,7 @@ public class RegistryConfigBeanDefinitionParser implements BeanDefinitionParser{
         
         if(logger.isInfoEnabled())
         {
-        	logger.info("Registering the bean with id='" + id + "' into the beanfactory");
+        	logger.info("frpc: Registering the bean with id='" + id + "' into the beanfactory");
         }
         parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
 		return beanDefinition;
