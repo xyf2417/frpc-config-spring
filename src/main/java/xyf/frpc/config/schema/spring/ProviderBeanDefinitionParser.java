@@ -48,7 +48,7 @@ public class ProviderBeanDefinitionParser implements BeanDefinitionParser{
         }
         Object reference = new RuntimeBeanReference(ref);
 
-        beanDefinition.getPropertyValues().addPropertyValue("target", reference);
+        beanDefinition.getPropertyValues().addPropertyValue("ref", reference);
         
         
         if(logger.isInfoEnabled())
