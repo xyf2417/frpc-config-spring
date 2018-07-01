@@ -23,16 +23,15 @@ public class ProtocolConfigBeanDefinitionParser implements BeanDefinitionParser{
         
         
         String id = element.getAttribute("id");
-        if(id == null || id.length() == 0)
-        {
-        	throw new IllegalStateException("The protocol element must has the id attribute");
-        }
-        if (parserContext.getRegistry().containsBeanDefinition(id)) {
-            throw new IllegalStateException("Duplicate spring bean id " + id);
-        }
-        beanDefinition.getPropertyValues().addPropertyValue("id", id);
-        
-        
+		if (id == null || id.length() <= 0) {
+			id = BEAN_CLASS.getName() + "-" + System.currentTimeMillis();
+			if (parserContext.getRegistry().containsBeanDefinition(id)) {
+				throw new IllegalStateException("Duplicate spring bean id "
+						+ id);
+			}
+		}
+		beanDefinition.getPropertyValues().addPropertyValue("id", id);
+ 
         String port = element.getAttribute("port");
         int iport = 0;
         try {

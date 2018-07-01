@@ -18,23 +18,28 @@
     	</xsd:attribute>
     </xsd:complexType>
     
-    <xsd:complexType name="consumerType">
+    <xsd:complexType name="referenceType">
     	<xsd:attribute name="name" type="xsd:string" use="optional">
     		<xsd:annotation>
-                <xsd:documentation><![CDATA[ The consumer name. ]]></xsd:documentation>
+                <xsd:documentation><![CDATA[ The reference name. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
     	<xsd:attribute name="id" type="xsd:string" use="optional">
     		<xsd:annotation>
-                <xsd:documentation><![CDATA[ The consumer id. ]]></xsd:documentation>
+                <xsd:documentation><![CDATA[ The reference id. ]]></xsd:documentation>
+            </xsd:annotation>
+    	</xsd:attribute>
+    	<xsd:attribute name="interface" type="xsd:string" use="required">
+    		<xsd:annotation>
+                <xsd:documentation><![CDATA[ The reference interface. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
     </xsd:complexType>
     
 
-    <xsd:element name="consumer" type="consumerType">
+    <xsd:element name="reference" type="referenceType">
         <xsd:annotation>
-            <xsd:documentation><![CDATA[ The consumer config ]]></xsd:documentation>
+            <xsd:documentation><![CDATA[ The reference config ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
     

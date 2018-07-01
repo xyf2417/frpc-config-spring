@@ -6,7 +6,7 @@ import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 public class FRPCNamespaceHandler extends NamespaceHandlerSupport{
 
 	public void init() {
-        registerBeanDefinitionParser("consumer", new ComsumerBeanDefinitionParser());
+        registerBeanDefinitionParser("reference", new ReferenceBeanDefinitionParser());
         registerBeanDefinitionParser("protocol", new ProtocolConfigBeanDefinitionParser());
         registerBeanDefinitionParser("registry", new RegistryConfigBeanDefinitionParser());
         registerBeanDefinitionParser("application", new ApplicationBeanDefinitionParser());

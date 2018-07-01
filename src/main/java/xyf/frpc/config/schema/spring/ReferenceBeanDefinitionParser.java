@@ -8,20 +8,21 @@ import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
 
-import xyf.frpc.config.Application;
+import xyf.frpc.config.Reference;
 
-public class ApplicationBeanDefinitionParser implements BeanDefinitionParser{
+public class ReferenceBeanDefinitionParser implements BeanDefinitionParser {
 
-	private final static Log logger = LogFactory.getLog(ApplicationBeanDefinitionParser.class);
-	
-	private final static Class<?> BEAN_CLASS = Application.class;
-	
+	private final static Log logger = LogFactory
+			.getLog(ReferenceBeanDefinitionParser.class);
+
+	private final static Class<?> BEAN_CLASS = Reference.class;
+
 	public BeanDefinition parse(Element element, ParserContext parserContext) {
 		RootBeanDefinition beanDefinition = new RootBeanDefinition();
-        beanDefinition.setBeanClass(BEAN_CLASS);
-        beanDefinition.setLazyInit(false);
-        
-        String id = element.getAttribute("id");
+		beanDefinition.setBeanClass(BEAN_CLASS);
+		beanDefinition.setLazyInit(false);
+
+		String id = element.getAttribute("id");
 		if (id == null || id.length() <= 0) {
 			id = BEAN_CLASS.getName() + "-" + System.currentTimeMillis();
 			if (parserContext.getRegistry().containsBeanDefinition(id)) {
@@ -30,21 +31,24 @@ public class ApplicationBeanDefinitionParser implements BeanDefinitionParser{
 			}
 		}
 		beanDefinition.getPropertyValues().addPropertyValue("id", id);
-		
+
 		String name = element.getAttribute("name");
 		if (name == null || name.length() == 0) {
 			name = id;
 		}
 		beanDefinition.getPropertyValues().addPropertyValue("name", name);
-        
-        
-        if(logger.isInfoEnabled())
-        {
-        	logger.info("frpc: Registering the bean with id='" + id + "' into the beanfactory");
-        }
-        parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
+
+		String interfaceValue = element.getAttribute("interface");
+
+		beanDefinition.getPropertyValues().addPropertyValue("interface",
+				interfaceValue);
+
+		if (logger.isInfoEnabled()) {
+			logger.info("frpc: Registering the bean with id='" + id
+					+ "' into the beanfactory");
+		}
+		parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
 		return beanDefinition;
 	}
-
 
 }
