@@ -50,7 +50,7 @@ public class ReferenceBeanDefinitionParser implements BeanDefinitionParser {
 				interfaceValue);
 
 		if (logger.isInfoEnabled()) {
-			logger.info("frpc: Registering the bean with id='" + id
+			logger.info("frpc: Registering the Reference with id='" + id
 					+ "' into the beanfactory");
 		}
 		parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);

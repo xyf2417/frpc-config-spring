@@ -10,6 +10,6 @@ public class FRPCNamespaceHandler extends NamespaceHandlerSupport{
         registerBeanDefinitionParser("protocol", new ProtocolConfigBeanDefinitionParser());
         registerBeanDefinitionParser("registry", new RegistryConfigBeanDefinitionParser());
         registerBeanDefinitionParser("application", new ApplicationBeanDefinitionParser());
-        registerBeanDefinitionParser("provider", new ProviderBeanDefinitionParser());
+        registerBeanDefinitionParser("service", new ServiceBeanDefinitionParser());
     }
 }

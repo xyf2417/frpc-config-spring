@@ -137,25 +137,25 @@
         </xsd:annotation>
     </xsd:element>
     
-    <xsd:complexType name="providerType">
+    <xsd:complexType name="serviceType">
     	<xsd:complexContent>
             <xsd:extension base="abstractConfigType">
 		    	<xsd:attribute name="interface" type="xsd:string" use="required">
 		    		<xsd:annotation>
-		                <xsd:documentation><![CDATA[ The provider interface. ]]></xsd:documentation>
+		                <xsd:documentation><![CDATA[ The service interface. ]]></xsd:documentation>
 		            </xsd:annotation>
 		    	</xsd:attribute>
 		    	<xsd:attribute name="ref" type="xsd:string" use="required">
 		    		<xsd:annotation>
-		                <xsd:documentation><![CDATA[ The interface implementation bean id. ]]></xsd:documentation>
+		                <xsd:documentation><![CDATA[ The service implementation bean id. ]]></xsd:documentation>
 		            </xsd:annotation>
 		    	</xsd:attribute>
 	    	</xsd:extension>
     	</xsd:complexContent>
     </xsd:complexType>
-    <xsd:element name="provider" type="providerType">
+    <xsd:element name="service" type="serviceType">
         <xsd:annotation>
-            <xsd:documentation><![CDATA[ The provider ]]></xsd:documentation>
+            <xsd:documentation><![CDATA[ The service ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
  

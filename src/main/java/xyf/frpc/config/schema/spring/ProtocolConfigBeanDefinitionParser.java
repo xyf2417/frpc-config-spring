@@ -51,7 +51,7 @@ public class ProtocolConfigBeanDefinitionParser implements BeanDefinitionParser{
         
         if(logger.isInfoEnabled())
         {
-        	logger.info("frpc: Registering the bean with id='" + id + "' into the beanfactory");
+        	logger.info("frpc: Registering the Protocol with id='" + id + "' into the beanfactory");
         }
         parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
 		return beanDefinition;
