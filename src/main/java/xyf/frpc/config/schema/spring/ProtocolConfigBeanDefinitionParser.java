@@ -36,16 +36,13 @@ public class ProtocolConfigBeanDefinitionParser implements BeanDefinitionParser{
         int iport = 0;
         try {
 			iport = Integer.parseInt(port);
+			beanDefinition.getPropertyValues().addPropertyValue("port", iport);
 		} catch (Throwable e) {
 			throw new IllegalStateException("The invalid attribute value '" + port + "' of port");
 		}
-        beanDefinition.getPropertyValues().addPropertyValue("port", iport);
+        
         
         String name = element.getAttribute("name");
-//        if(name == null || name == "")
-//        {
-//        	name = ConfigConstants.DEFAULT_PROTOCOL_NAME;
-//        }
         beanDefinition.getPropertyValues().addPropertyValue("name", name);
         
         

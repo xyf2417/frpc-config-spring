@@ -34,9 +34,14 @@
                 <xsd:documentation><![CDATA[ The reference interface. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
-    	<xsd:attribute name="host" type="xsd:string" use="required">
+    	<xsd:attribute name="host" type="xsd:string" use="optional">
     		<xsd:annotation>
-                <xsd:documentation><![CDATA[ The provider ip/host. ]]></xsd:documentation>
+                <xsd:documentation><![CDATA[ The service ip/host. ]]></xsd:documentation>
+            </xsd:annotation>
+    	</xsd:attribute>
+    	<xsd:attribute name="port" type="xsd:integer" use="optional">
+    		<xsd:annotation>
+                <xsd:documentation><![CDATA[ The service port. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
     </xsd:complexType>

@@ -39,10 +39,21 @@ public class ReferenceBeanDefinitionParser implements BeanDefinitionParser {
 		beanDefinition.getPropertyValues().addPropertyValue("name", name);
 		
 		String host = element.getAttribute("host");
-		if(host == null || host.length() == 0) {
-			throw new IllegalStateException("Element <fprc:reference> must has 'host' attribute!");
+		if(host != null && host.length() > 0){
+			beanDefinition.getPropertyValues().addPropertyValue("host", host);
 		}
-		beanDefinition.getPropertyValues().addPropertyValue("host", host);
+		
+		String port = element.getAttribute("port");
+		if(port != null && port.length() > 0) {
+	        int iport = 0;
+	        try {
+				iport = Integer.parseInt(port);
+				beanDefinition.getPropertyValues().addPropertyValue("port", iport);
+			} catch (Throwable e) {
+				throw new IllegalStateException("The invalid attribute value '" + port + "' of port");
+			}
+		}
+        
 
 		String interfaceValue = element.getAttribute("interface");
 
