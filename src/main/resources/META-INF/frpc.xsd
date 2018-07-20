@@ -44,6 +44,11 @@
                 <xsd:documentation><![CDATA[ The service port. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
+    	<xsd:attribute name="mock" type="xsd:string" use="optional">
+    		<xsd:annotation>
+                <xsd:documentation><![CDATA[ The bean id of mock implementaion. ]]></xsd:documentation>
+            </xsd:annotation>
+    	</xsd:attribute>
     </xsd:complexType>
     
 

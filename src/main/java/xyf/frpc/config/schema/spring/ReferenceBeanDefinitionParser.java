@@ -3,6 +3,7 @@ package xyf.frpc.config.schema.spring;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.BeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
@@ -54,12 +55,20 @@ public class ReferenceBeanDefinitionParser implements BeanDefinitionParser {
 			}
 		}
         
-
+		
 		String interfaceValue = element.getAttribute("interface");
 
 		beanDefinition.getPropertyValues().addPropertyValue("interface",
 				interfaceValue);
+		
+		String mock = element.getAttribute("mock");
+		
+		if(mock != null && mock.length() > 0) {
+			Object mockRef = new RuntimeBeanReference(mock);
 
+	        beanDefinition.getPropertyValues().addPropertyValue("mock", mockRef);
+		}
+		
 		if (logger.isInfoEnabled()) {
 			logger.info("frpc: Registering the Reference with id='" + id
 					+ "' into the beanfactory");
