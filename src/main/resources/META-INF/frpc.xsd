@@ -49,6 +49,11 @@
                 <xsd:documentation><![CDATA[ The bean id of mock implementaion. ]]></xsd:documentation>
             </xsd:annotation>
     	</xsd:attribute>
+    	<xsd:attribute name="stub" type="xsd:string" use="optional">
+    		<xsd:annotation>
+                <xsd:documentation><![CDATA[ The bean id of local stub. ]]></xsd:documentation>
+            </xsd:annotation>
+    	</xsd:attribute>
     </xsd:complexType>
     
 

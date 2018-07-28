@@ -69,6 +69,19 @@ public class ReferenceBeanDefinitionParser implements BeanDefinitionParser {
 	        beanDefinition.getPropertyValues().addPropertyValue("mock", mockRef);
 		}
 		
+		String stub = element.getAttribute("stub");
+		
+		if(mock != null && mock.length() > 0) {
+			Class stubClass;
+			try {
+				stubClass = Class.forName(stub);
+			} catch (ClassNotFoundException e) {
+				throw new IllegalStateException("Can't find the stubClass of: " + stub);
+			}
+
+	        beanDefinition.getPropertyValues().addPropertyValue("stubClass", stubClass);
+		}
+		
 		if (logger.isInfoEnabled()) {
 			logger.info("frpc: Registering the Reference with id='" + id
 					+ "' into the beanfactory");
